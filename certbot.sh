@@ -44,7 +44,7 @@ else
                                         --manual-public-ip-logging-ok \
                                         --agree-tos \
                                         --preferred-challenges dns \
-                                        --manual-auth-hook /auth_hook.sh \
+                                        --manual-auth-hook /authhook.sh \
                                         -n \
                                         -d $DOMAIN \
                                         -m $EMAIL
@@ -55,7 +55,7 @@ else
                                         --manual-public-ip-logging-ok \
                                         --agree-tos \
                                         --preferred-challenges dns \
-                                        --manual-auth-hook /auth_hook.sh \
+                                        --manual-auth-hook /authhook.sh \
                                         -n \
                                         -d $DOMAIN \
                                         -m $EMAIL
