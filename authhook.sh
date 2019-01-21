@@ -8,7 +8,7 @@ _acme-challenge.$CERTBOT_DOMAIN with the following value:
 
 $CERTBOT_VALIDATION
 
-"
+If validation failed (this time), then create the TXT record and restart the container to retry.
 
-read -t 120 -p "Hit ENTER or wait 120 seconds"
+"
 
