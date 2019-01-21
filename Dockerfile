@@ -22,7 +22,8 @@ RUN \
 		mosquitto-clients && \
 	rm -f /var/cache/apk/* && \
 	pip install --upgrade pip && \
-	pip install pyRFC3339 configobj ConfigArgParse
+	pip install pyRFC3339 configobj ConfigArgParse &&\
+        chown mosquitto /mosquitto/log
 
 COPY run.sh /run.sh
 COPY certbot.sh /certbot.sh
