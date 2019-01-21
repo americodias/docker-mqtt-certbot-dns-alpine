@@ -28,7 +28,7 @@ RUN \
 		curl \
 		bash \
 		coreutils \
-		nano \
+                bind-tools \
         	py-crypto \
 		ca-certificates \
         	certbot \
