@@ -25,6 +25,7 @@ RUN \
 	apk upgrade && \
 	apk add \
 		jq \
+		curl \
 		bash \
 		coreutils \
 		nano \
