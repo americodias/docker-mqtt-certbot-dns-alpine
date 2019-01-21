@@ -1,5 +1,16 @@
 FROM python:2.7-alpine
 LABEL maintainer bitrox <proxy@bitrox.io>
+LABEL maintainer funkypenguin <davidy@funkypenguin.co.nz>
+
+# Now we DO need these, for the auto-labeling of the image
+ARG BUILD_DATE
+ARG VCS_REF
+
+# Good docker practice, plus we get microbadger badges
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.vcs-url="https://github.com/funkypenguin/docker-mqtt-certbot-dns-alpine.git" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.schema-version="2.2-r1"
 
 # Set environment variables.
 ENV TERM=xterm-color
