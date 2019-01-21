@@ -38,6 +38,7 @@ if [ -d "$FOLDER" ]; then
                 echo "Renew certs ..."
                 certbot renew \
 			--noninteractive \
+                        --server https://acme-v02.api.letsencrypt.org/directory \
 			--manual-auth-hook /cloudflare/cloudflare-update-dns.sh \
 			--manual-cleanup-hook /cloudflare/cloudflare-clean-dns.sh \
 			--post-hook "/restart.sh"
@@ -62,6 +63,7 @@ else
                         else
                                 echo "Obtaining cert for $DOMAIN using DNS validation"
                                 certbot certonly \
+					--server https://acme-v02.api.letsencrypt.org/directory \
                                         --manual \
                                         --manual-public-ip-logging-ok \
                                         --agree-tos \
