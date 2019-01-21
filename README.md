@@ -34,6 +34,8 @@ Got more details at:
 
 A fork of https://hub.docker.com/r/bitrox/alpine-mosquitto-certbot/ to include DNS validation for LetsEncrypt certificates (if you're unable to expose port 80 on the container)
 
+CloudFlare API scripts are from https://github.com/7sDream/certbot-dns-challenge-cloudflare-hooks
+
 # Why should I use this?
 
 # How do I use this?

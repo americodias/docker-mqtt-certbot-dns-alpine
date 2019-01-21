@@ -17,6 +17,7 @@ ENV TERM=xterm-color
 ENV SHELL=/bin/bash
 
 RUN \
+	mkdir /cloudflare && \
 	mkdir /mosquitto && \
 	mkdir /mosquitto/log && \
 	mkdir /mosquitto/conf && \
@@ -39,7 +40,7 @@ RUN \
 
 COPY run.sh /run.sh
 COPY certbot.sh /certbot.sh
-COPY cloudflare /
+COPY cloudflare/* /cloudflare/
 COPY restart.sh /restart.sh
 COPY croncert.sh /etc/periodic/weekly/croncert.sh
 
@@ -47,7 +48,7 @@ RUN \
 	chmod +x /run.sh && \
 	chmod +x /certbot.sh && \
 	chmod +x /restart.sh && \
-	chmod +x /cloudlare/*.sh && \
+	chmod +x /cloudflare/*.sh && \
 	chmod +x /etc/periodic/weekly/croncert.sh
 
 EXPOSE 1883
