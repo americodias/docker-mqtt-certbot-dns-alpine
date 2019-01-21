@@ -27,10 +27,10 @@ if [ -d "$FOLDER" ]; then
         echo "Certificates exist, attempting to renew..."
         if [ ! -z "$TESTCERT" ]; then
                 echo "Renew dry run ..."
-                certbot renew --dry-run --noninteractive --post-hook "/restart.sh"
+                certbot renew --dry-run --noninteractive --manual-auth-hook /authhook.sh --post-hook "/restart.sh"
         else
                 echo "Renew certs ..."
-                certbot renew --noninteractive --post-hook "/restart.sh"
+                certbot renew --noninteractive --manual-auth-hook /authhook.sh --post-hook "/restart.sh"
         fi
 else
         if [ ! -z "$DOMAIN" ]; then

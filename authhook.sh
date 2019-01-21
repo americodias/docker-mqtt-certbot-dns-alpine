@@ -1,4 +1,4 @@
-#!/bin/ash
+#!/bin/bash
 
 echo "
 ########## Required for LetsEncrypt DNS validation ############
@@ -8,8 +8,7 @@ _acme-challenge.$CERTBOT_DOMAIN with the following value:
 
 $CERTBOT_VALIDATION
 
-I'll sleep 10 min to give you time to get it done...
-
 "
 
-sleep 10m
+read -t 120 -p "Hit ENTER or wait 120 seconds"
+
