@@ -23,6 +23,7 @@ RUN \
 	apk update && \
 	apk upgrade && \
 	apk add \
+		jq \
 		bash \
 		coreutils \
 		nano \
@@ -38,20 +39,20 @@ RUN \
 
 COPY run.sh /run.sh
 COPY certbot.sh /certbot.sh
+COPY cloudflare /
 COPY restart.sh /restart.sh
-COPY authhook.sh /authhook.sh
 COPY croncert.sh /etc/periodic/weekly/croncert.sh
+
 RUN \
 	chmod +x /run.sh && \
 	chmod +x /certbot.sh && \
 	chmod +x /restart.sh && \
-	chmod +x /authhook.sh && \
+	chmod +x /cloudlare/*.sh && \
 	chmod +x /etc/periodic/weekly/croncert.sh
 
 EXPOSE 1883
 EXPOSE 8883
-EXPOSE 80
 
 # This will run any scripts found in /scripts/*.sh
-# then start Apache
+# then start mosquitto
 CMD ["/bin/bash","-c","/run.sh"]

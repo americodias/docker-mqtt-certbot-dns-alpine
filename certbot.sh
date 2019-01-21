@@ -27,10 +27,20 @@ if [ -d "$FOLDER" ]; then
         echo "Certificates exist, attempting to renew..."
         if [ ! -z "$TESTCERT" ]; then
                 echo "Renew dry run ..."
-                certbot renew --dry-run --noninteractive --manual-auth-hook /authhook.sh --post-hook "/restart.sh"
+                certbot renew \
+                        --staging \
+			--dry-run \
+			--noninteractive \
+			--manual-auth-hook /cloudflare/cloudflare-update-dns.sh \
+			--manual-cleanup-hook /cloudflare/cloudflare-clean-dns.sh \
+			--post-hook "/restart.sh"
         else
                 echo "Renew certs ..."
-                certbot renew --noninteractive --manual-auth-hook /authhook.sh --post-hook "/restart.sh"
+                certbot renew \
+			--noninteractive \
+			--manual-auth-hook /cloudflare/cloudflare-update-dns.sh \
+			--manual-cleanup-hook /cloudflare/cloudflare-clean-dns.sh \
+			--post-hook "/restart.sh"
         fi
 else
         if [ ! -z "$DOMAIN" ]; then
@@ -44,7 +54,8 @@ else
                                         --manual-public-ip-logging-ok \
                                         --agree-tos \
                                         --preferred-challenges dns \
-                                        --manual-auth-hook /authhook.sh \
+					--manual-auth-hook /cloudflare/cloudflare-update-dns.sh \
+					--manual-cleanup-hook /cloudflare/cloudflare-clean-dns.sh \
                                         -n \
                                         -d $DOMAIN \
                                         -m $EMAIL
@@ -55,7 +66,8 @@ else
                                         --manual-public-ip-logging-ok \
                                         --agree-tos \
                                         --preferred-challenges dns \
-                                        --manual-auth-hook /authhook.sh \
+					--manual-auth-hook /cloudflare/cloudflare-update-dns.sh \
+					--manual-cleanup-hook /cloudflare/cloudflare-clean-dns.sh \
                                         -n \
                                         -d $DOMAIN \
                                         -m $EMAIL
