@@ -3,8 +3,8 @@
 #CLOUDFLARE_EMAIL=<input-your-email-here>
 
 CHALLENGE_PREFIX="_acme-challenge"
-CHALLENGE_DOMAIN="${CHALLENGE_PREFIX}.${CERTBOT_DOMAIN}"
-PARENT_DOMAIN=$(sed 's/.*\.\(.*\..*\)/\1/' <<< "${CERTBOT_DOMAIN}")
+CHALLENGE_DOMAIN="${CHALLENGE_PREFIX}.${DOMAIN}"
+PARENT_DOMAIN=$(sed 's/.*\.\(.*\..*\)/\1/' <<< "${DOMAIN}")
 
 CLOUDFLARE_ZONE=$(curl -X GET "https://api.cloudflare.com/client/v4/zones?name=${PARENT_DOMAIN}" \
      -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
